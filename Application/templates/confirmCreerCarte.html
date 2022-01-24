@@ -1,0 +1,18 @@
+{% include "vueEntete.html" %}
+{% include "vueEnteteAuthentification.html" %}
+
+{%if is_confirm == 0 %}
+<p>Confirmer la création de la carte ?</p>
+
+<a href= "/gestionnaire/creerCarte/{{numCarte}}/ActiveCarte" class="btn btn-default">Oui</a>
+<a href= "/gestionnaire/listePersonnelSansCarte" class="btn btn-default">Non</a>
+
+{% else %}
+
+<p>La carte est par défault bloquée voulez vous m'activer ?</p>
+<a href= "/gestionnaire/creerCarte/{{numCarte}}/1" class="btn btn-default">Oui</a>
+<a href= "/gestionnaire/creerCarte/{{numCarte}}/0" class="btn btn-default">Non</a>
+
+{% endif %}
+
+{% include "vuePied.html" %}

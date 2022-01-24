@@ -1,0 +1,23 @@
+{% include "vueEntete.html" %}
+{% include "vueEnteteGestionnaire.html" %}
+
+{% for personnel in listePersonnel %}
+<div class = "tabPersonnelReservation">
+	<table>
+		<tr>
+			<th>Matricule</th>
+			<th>Nom</th>
+			<th>Prénom</th>
+			<th>Service</th>
+		</tr>
+		<tr>
+			<td>{{ personnel['numeroCarte'] }}</td>
+			<td>{{ personnel['nom'] }}</td>
+			<td>{{ personnel['prenom'] }}</td>
+			<td>{{ personnel['nomService'] }}</td>
+		</tr>
+	</table>
+</div>
+{% endfor %}
+
+{% include "vuePied.html" %}

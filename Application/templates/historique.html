@@ -1,0 +1,22 @@
+{% include "vueEntete.html" %}
+{% include "vueEnteteGestionnaire.html" %}
+{%if Reservations %}
+
+<div class = "Tab2">
+	<h1>Historique</h1>
+	<table>
+		<tr>
+			{%for res in Reservations%}
+			<td>{{res}}</td>
+			{%endfor%}
+		</tr>
+
+	</table>
+
+</div>
+
+{%else%}
+	<h1>Pas de réservations dans l'historique</h1>
+{%endif%}
+
+{% include "vuePied.html" %}

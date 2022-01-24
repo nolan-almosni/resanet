@@ -1,0 +1,124 @@
+{% include "vueEntete.html" %}
+{% include "vueEnteteUsager.html" %}
+
+<div class="container-fluid">
+
+	<div class="row">
+		<div class="col-md-1"></div>
+			<div class="dateCourante">
+				<p>Nous sommes le {{lesDates[0]['fr']}} </p>
+			</div>
+
+		</div>
+	<div class="row">
+		<div class="col-md-1"></div>
+	
+			{% for i in range(5) %}
+
+				<div class="col-md-1">
+				
+					<a
+					
+						{% if lesDates[i]['reservee'] %}
+							href="/usager/reservations/annuler/{{ lesDates[i]['iso'] }}" 
+							class="btn btn-success"
+						{% else %}
+							href="/usager/reservations/enregistrer/{{ lesDates[i]['iso'] }}"
+							class="btn btn-default"
+						{% endif %}
+						
+						{% if lesDates[i]['verrouillee'] %}
+							disabled="disabled"
+						{% endif %}
+
+						{%if numAjd[i] == 1%}
+							title= "lundi"
+						{%elif numAjd[i] == 2%}
+							title= "mardi"
+						{%elif numAjd[i] == 3%}
+							title= "mercredi"
+						{%elif numAjd[i] == 4%}
+							title= "jeudi"
+						{%elif numAjd[i] == 5%}
+							title= "vendredi"
+						{%endif%}
+					title = {{numAjd[i]}}
+					>
+					
+						{{ lesDates[i]['fr'] }}
+					</a>
+				
+				</div>
+				<div class="col-md-1"></div>
+			
+			{% endfor%}
+
+	</div>
+	
+	<p></p>
+	
+	<div class="row">
+		<div class="col-md-1"></div>
+		
+			{% for i in range(5,10) %}
+			
+				<div class="col-md-1">
+				
+					<a
+					
+						{% if lesDates[i]['reservee'] %}
+							href="/usager/reservations/annuler/{{ lesDates[i]['iso'] }}" 
+							class="btn btn-success"
+						{% else %}
+							href="/usager/reservations/enregistrer/{{ lesDates[i]['iso'] }}"
+							class="btn btn-default"
+						{% endif %}
+
+						{% if lesDates[i]['verrouillee'] %}
+							disabled="disabled"
+						{% endif %}
+
+						{%if numAjd[i] == 1%}
+							title= "lundi"
+						{%elif numAjd[i] == 2%}
+							title= "mardi"
+						{%elif numAjd[i] == 3%}
+							title= "mercredi"
+						{%elif numAjd[i] == 4%}
+							title= "jeudi"
+						{%elif numAjd[i] == 5%}
+							title= "vendredi"
+						{%endif%}
+
+						title = {{numAjd[i]}}
+					>
+					
+						{{ lesDates[i]['fr'] }}
+					</a>
+				
+				</div>
+				<div class="col-md-1"></div>
+			
+			{% endfor%}
+		
+	</div>
+	
+	<p></p>
+	
+	<div class="row">
+		<div class="col-md-1"></div>
+			<div class="col-md-4">
+			<div class="soldeInsuffisant">
+			{% if soldeInsuffisant == True %}
+				<p class="alert alert-danger" role="alert">Solde insuffisant</p>
+
+			{% endif %}
+			</div>
+		</div>
+	</div>
+
+	</div>
+	
+</div>
+
+{% include "vuePied.html" %}

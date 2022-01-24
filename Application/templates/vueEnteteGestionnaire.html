@@ -1,0 +1,86 @@
+<nav class="navbar navbar-default" role="navigation">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <span class="navbar-brand">Résanet</span>
+		</div>
+		<div id="navbar" class="navbar-collapse collapse">
+			<ul class="nav navbar-nav">
+				<li><a href="#">Réservations</a></li>
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Personnels<span class="caret"></span></a>
+					<ul class="dropdown-menu" role="menu">
+					  <li><a href="listePersonnelAvecCarte">Personnels avec carte</a></li>
+					  <li><a href="listePersonnelSansCarte">Personnels sans carte</a></li>
+					</ul>
+				</li>
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Cartes<span class="caret"></span></a>
+					<ul class="dropdown-menu" role="menu">
+					  <li><a href="#">Créer</a></li>
+					  <li><a href="#">Gérer</a></li>
+					  <li><a href="#" data-toggle="modal" data-target="#crediter1">crediter</a></li>
+					</ul>
+				</li>
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Réservations<span class="caret"></span></a>
+					<ul class="dropdown-menu" role="menu">
+					  <li><a href="#" data-toggle="modal" data-target="#dateReservation">Pour une date</a></li>
+					  <li><a href="#" data-toggle="modal" data-target="#historiqueCarte">Pour une carte</a></li>
+					</ul>
+				</li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li><p class="navbar-text">{{session['prenom']}} {{session['nom']}}</p></li>
+				<li><a href="/gestionnaire/seDeconnecter">Se déconnecter</a></li>
+            </ul>
+		</div>
+	</div>
+	
+	<div class="modal" id="dateReservation">
+		<div id="formulaire">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">Date réservation</h4>
+					</div>
+					<div class="modal-body row">
+						<form action = "/gestionnaire/dateReservation" method = "POST">
+							<div class="form-group">
+								<label for="nom" class="form-control-label">Insérez la date :</label>
+								<input type="date" class="form-control" name ="date" id="date" placeholder="date">
+							</div>
+							<button type="submit" class="btn btn-primary pull-right">Envoyer</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="modal" id="historiqueCarte">
+		<div id="formulaire">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title">Historique Reservation</h4>
+			</div>
+			<div class="modal-body row">
+				<form action = "/gestionnaire/historique/" method = "POST">
+				<div class="form-group">
+					<label for="nom" class="form-control-label">Numéro de la carte de l'historique a consulter:</label>
+					<input type="number" class="form-control" name ="numCarte" id="numCarte" placeholder="Numéro de la carte">
+				</div>
+				<button type="submit" class="btn btn-primary pull-right">Envoyer</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</nav>

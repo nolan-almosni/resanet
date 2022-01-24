@@ -1,0 +1,55 @@
+body {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.navbar {
+  margin-bottom: 20px;
+}
+.soldeInsuffisant{
+    width : 260% ;
+}
+.dateCourante{
+    float : left ;
+    border : 1px solid ;
+    border-radius: 4px;
+    box-sizing: border-box;
+    border-color : #2cb0d7 ;
+    padding-top : 12px ;
+    padding-left: 15px ;
+    padding-right: 25px ;
+    height :50px ;
+    margin-bottom : 15px ;
+    background-color: #AED6F1 ;
+}
+.tabPersonnelAvecCarte td, th{
+	width: 100%;
+    border-width: 1px ;
+    border-top: 2px solid;
+    border-bottom: 2px solid;
+    border-color: black;
+    border-collapse: collapse;
+    padding: 1.2% ;
+    text-align: center;
+}
+.tabPersonnelSansCarte td, th{
+	width: 280px;
+    border-width: 1px ;
+    border-top: 2px solid;
+    border-bottom: 2px solid;
+    border-color: black;
+    border-collapse: collapse;
+    padding: 10px ;
+    text-align: center;
+}
+
+.tabPersonnelReservation td, th{
+	width: 300px;
+    border-width: 1px ;
+    border-top: 2px solid;
+    border-bottom: 2px solid;
+    border-color: black;
+    border-collapse: collapse;
+    padding: 15px ;
+    text-align: center;
+  }

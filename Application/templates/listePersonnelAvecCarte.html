@@ -1,0 +1,93 @@
+{% include "vueEntete.html" %}
+{% include "vueEnteteGestionnaire.html" %}
+<div class = "tabPersonnelAvecCarte">
+	<table>
+		<tr>
+			<th>N°Carte</th>
+			<th>Solde</th>
+			<th>Etat Carte</th>
+			<th>Matricule</th>
+			<th>Nom</th>
+			<th>Prénom</th>
+			<th>Service</th>
+			<th></th>
+			<th></th>
+			<th></th>
+		</tr>
+			{% for personnel in listePersonnel %}
+		<tr>
+				<td>{{ personnel['matricule'] }}</td>
+				<td>{{ personnel['solde'] }}</td>
+				<td>{% if personnel['activee']==1 %}
+						activée
+					{% else %}
+						Bloquée
+					{% endif %}
+				</td>
+				<td>{{ personnel['matricule'] }}</td>
+				<td>{{ personnel['nom'] }}</td>
+				<td>{{ personnel['prenom'] }}</td>
+				<td>{{ personnel['nomService'] }}</td>
+				{% if personnel['activee']==1 %}
+				<td><a href= "/gestionnaire/BloqueCarte/ {{ personnel['matricule'] }}" class="btn btn-default">Bloque Carte</a></td>
+				<td><a type="button" href="/gestionnaire/resetMdpCarte/ {{personnel['matricule']}}" class="btn btn-default" data-toggle="modal" data-target="#ResetMDP-Modal">Reinitialiser MDP</a>
+				<td><a href="/gestionnaire/historique/{{personnel['matricule']}}" class="btn btn-default">Historique</a></td>
+				<!-- Modal -->
+				<div class="modal fade" id="ResetMDP-Modal" role="dialog">
+					<div class="modal-dialog modal-sm">
+				<!-- Modal content-->
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal">&times;</button>
+								<h4 class="modal-title">MDP réinitialisé</h4>
+							</div>
+							<div class="modal-body">
+								<p>Le mot de passe a été réinitialisé.</p>
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-default" data-dismiss="modal">Ok</button>
+							</div>
+						</div>   
+					</div>
+				</div>
+				</td>
+				
+				<td><a type="button" class="btn btn-default" data-toggle="modal" data-target="#crediter{{personnel['matricule']}}">Créditer Carte</a>
+				<div class="modal" id="crediter{{personnel['matricule']}}">
+					<div id="formulaire">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal">&times;</button>
+									<h4 class="modal-title">Créditer</h4>
+								</div>
+								<div class="modal-body row">
+									<form action = "/gestionnaire/crediter" method = "POST">
+										<div class="form-group">
+											<label for="nom" class="form-control-label">Numéro de la carte a créditer :</label>
+											<input type="number" value="{{personnel['matricule']}}" class="form-control" name ="numCarte" id="numCarte" placeholder="Numéro de la carte" min=0>
+											<label for="nom" class="form-control-label">Insérez la somme a créditer :</label>
+											<input type="number" class="form-control" name ="somme" id="somme" placeholder="somme">
+										</div>
+										<button type="submit" class="btn btn-primary pull-right">Envoyer</button>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</tr>
+			
+				{% else %}
+				<td><a href= "/gestionnaire/ActiverCarte/ {{ personnel['matricule'] }}" class="btn btn-success">Activer Carte</a></td>				
+				{% endif %}
+				
+			{% endfor %}
+			
+	</table>
+</div>
+
+
+
+
+{% include "vuePied.html" %}
